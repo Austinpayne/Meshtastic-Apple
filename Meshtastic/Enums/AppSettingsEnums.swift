@@ -134,6 +134,8 @@ enum MapTileServer: String, CaseIterable, Identifiable {
 	case usgsTopo
 	case usgsImageryTopo
 	case usgsImageryOnly
+	case esri
+	case googleSatellite
 	case terrain
 	case toner
 	case watercolor
@@ -158,6 +160,10 @@ enum MapTileServer: String, CaseIterable, Identifiable {
 			return "[USGS](https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer) [National Map](http://nationalmap.gov/) imagery and topographic overlay."
 		case .usgsImageryOnly:
 			return "[USGS](https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer) [National Map](http://nationalmap.gov/) imagery only overlay."
+		case .esri:
+			return ""
+		case .googleSatellite:
+			return ""
 		case .terrain:
 			return "[Map Tiles](http://maps.stamen.com/#terrain/) by [Stamen Design](https://stamen.com), under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Data © [OpenStreetMap](http://www.openstreetmap.org) contributors under [CC-BY-SA](http://creativecommons.org/licenses/by-sa/2.0/)."
 		case .toner:
@@ -186,6 +192,10 @@ enum MapTileServer: String, CaseIterable, Identifiable {
 			return "USGS Topo Imagery"
 		case .usgsImageryOnly:
 			return "USGS Imagery Only"
+		case .esri:
+			return "ESRI"
+		case .googleSatellite:
+			return "Google Satellite"
 		case .terrain:
 			return "Terrain"
 		case .toner:
@@ -214,6 +224,10 @@ enum MapTileServer: String, CaseIterable, Identifiable {
 			return "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}"
 		case .usgsImageryOnly:
 			return "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}"
+		case .esri:
+			return "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+		case .googleSatellite:
+			return "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
 		case .terrain:
 			return "https://stamen-tiles-d.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png"
 		case .toner:
@@ -243,6 +257,10 @@ enum MapTileServer: String, CaseIterable, Identifiable {
 			return [Int](0...16)
 		case .usgsImageryOnly:
 			return [Int](0...16)
+		case .esri:
+			return [Int](0...18)
+		case .googleSatellite:
+			return [Int](0...18)
 		case .terrain:
 			return [Int](0...15)
 		case .toner:
