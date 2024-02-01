@@ -1478,11 +1478,11 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Meshtastic/Meshtastic.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Meshtastic/Preview Content\"";
-				DEVELOPMENT_TEAM = GCH7VS5Y9R;
+				DEVELOPMENT_TEAM = 8B3WZ78H4L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Meshtastic/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Meshtastic;
@@ -1493,9 +1493,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.2.20;
-				PRODUCT_BUNDLE_IDENTIFIER = gvh.MeshtasticClient;
+				PRODUCT_BUNDLE_IDENTIFIER = com.painlessnetworx.MeshtasticClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1512,11 +1514,11 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Meshtastic/Meshtastic.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Meshtastic/Preview Content\"";
-				DEVELOPMENT_TEAM = GCH7VS5Y9R;
+				DEVELOPMENT_TEAM = 8B3WZ78H4L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Meshtastic/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Meshtastic;
@@ -1527,9 +1529,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.2.20;
-				PRODUCT_BUNDLE_IDENTIFIER = gvh.MeshtasticClient;
+				PRODUCT_BUNDLE_IDENTIFIER = com.painlessnetworx.MeshtasticClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1637,7 +1641,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GCH7VS5Y9R;
+				DEVELOPMENT_TEAM = 8B3WZ78H4L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
@@ -1649,7 +1653,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 2.2.20;
-				PRODUCT_BUNDLE_IDENTIFIER = gvh.MeshtasticClient.Widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.painlessnetworx.MeshtasticClient.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1670,7 +1674,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GCH7VS5Y9R;
+				DEVELOPMENT_TEAM = 8B3WZ78H4L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
@@ -1682,7 +1686,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 2.2.20;
-				PRODUCT_BUNDLE_IDENTIFIER = gvh.MeshtasticClient.Widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.painlessnetworx.MeshtasticClient.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
