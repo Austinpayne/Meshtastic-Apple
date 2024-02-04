@@ -10,6 +10,7 @@
 		6DA39D8E2A92DC52007E311C /* MeshtasticAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA39D8D2A92DC52007E311C /* MeshtasticAppDelegate.swift */; };
 		6DEDA55A2A957B8E00321D2E /* DetectionSensorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEDA5592A957B8E00321D2E /* DetectionSensorLog.swift */; };
 		6DEDA55C2A9592F900321D2E /* MessageEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEDA55B2A9592F900321D2E /* MessageEntityExtension.swift */; };
+		B399E8A22B6F412000E4488E /* TileDownloadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B399E8A12B6F412000E4488E /* TileDownloadStatus.swift */; };
 		C9697F9D279336B700250207 /* LocalMBTileOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9697F9C279336B700250207 /* LocalMBTileOverlay.swift */; };
 		C9697FA527933B8C00250207 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C9697FA427933B8C00250207 /* SQLite */; };
 		DD007BAE2AA4E91200F5FA12 /* MyInfoEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD007BAD2AA4E91200F5FA12 /* MyInfoEntityExtension.swift */; };
@@ -226,6 +227,7 @@
 		6DEDA5592A957B8E00321D2E /* DetectionSensorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionSensorLog.swift; sourceTree = "<group>"; };
 		6DEDA55B2A9592F900321D2E /* MessageEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEntityExtension.swift; sourceTree = "<group>"; };
 		A65FA974296876BF00A97686 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B399E8A12B6F412000E4488E /* TileDownloadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileDownloadStatus.swift; sourceTree = "<group>"; };
 		C9697F9C279336B700250207 /* LocalMBTileOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMBTileOverlay.swift; sourceTree = "<group>"; };
 		DD007BAD2AA4E91200F5FA12 /* MyInfoEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoEntityExtension.swift; sourceTree = "<group>"; };
 		DD007BAF2AA5981000F5FA12 /* NodeInfoEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfoEntityExtension.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				DD4F23CC28779A3C001D37CB /* EnvironmentMetricsLog.swift */,
 				6DEDA5592A957B8E00321D2E /* DetectionSensorLog.swift */,
 				DDE5B4032B2279A700FCDD05 /* TraceRouteLog.swift */,
+				B399E8A12B6F412000E4488E /* TileDownloadStatus.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -1237,6 +1240,7 @@
 				DDDE5A1029AFE69700490C6C /* MeshActivityAttributes.swift in Sources */,
 				DD1925B928CDA93900720036 /* SerialConfigEnums.swift in Sources */,
 				DD86D4112881D16900BAEB7A /* WriteCsvFile.swift in Sources */,
+				B399E8A22B6F412000E4488E /* TileDownloadStatus.swift in Sources */,
 				DDDB445029F8AC9C00EE2349 /* UIImage.swift in Sources */,
 				DD86D40F2881BE4C00BAEB7A /* CsvDocument.swift in Sources */,
 				DDB75A142A0593E2006ED576 /* OfflineTileManager.swift in Sources */,

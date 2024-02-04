@@ -23,7 +23,7 @@ class OfflineTileManager: ObservableObject {
 	private let fileManager = FileManager.default
 	// MARK: - Public property
 	var progress: Float = 0
-	var status: DownloadStatus = .download
+	@Published var status: DownloadStatus = .download
 	// MARK: - Public methods
 	func getAllDownloadedSize() -> String {
 		fileManager.allocatedSizeOfDirectory(at: documentsDirectory.appendingPathComponent("tiles"))
@@ -144,6 +144,10 @@ class OfflineTileManager: ObservableObject {
 		let file = "tiles/\(UserDefaults.mapTileServer.id)-z\(path.z)x\(path.x)y\(path.y).png"
 		let filename = documentsDirectory.appendingPathComponent(file)
 		do {
+			DispatchQueue.main.async { self.status = .downloading }
+			defer {
+				DispatchQueue.main.async { self.status = .downloaded }
+			}
 			let data = try Data(contentsOf: url)
 			try data.write(to: filename)
 		} catch {
