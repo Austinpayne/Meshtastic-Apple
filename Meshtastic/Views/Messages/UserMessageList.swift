@@ -36,7 +36,8 @@ struct UserMessageList: View {
 			ScrollViewReader { scrollView in
 				ScrollView {
 					LazyVStack {
-						ForEach( user.messageList ) { (message: MessageEntity) in
+						ForEach(user.messageList.indices, id: \.self) { idx in
+							let message = user.messageList[idx]
 							if user.num != bleManager.connectedPeripheral?.num ?? -1 {
 								let currentUser: Bool = (Int64(UserDefaults.preferredPeripheralNum) == message.fromUser?.num ?? -1 ? true : false)
 
@@ -209,7 +210,7 @@ struct UserMessageList: View {
 										}
 									}
 									.padding(.bottom)
-									.id(user.messageList.firstIndex(of: message))
+									.id(idx)
 									if !currentUser {
 										Spacer(minLength: 50)
 									}
