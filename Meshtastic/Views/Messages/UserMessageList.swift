@@ -211,6 +211,37 @@ struct UserMessageList: View {
 									}
 									.padding(.bottom)
 									.id(idx)
+
+									if currentUser && message.ackError > 0 {
+										RetryButton() {
+											guard bleManager.connectedPeripheral?.peripheral.state == .connected else {
+												return
+											}
+											let payload = message.messagePayload ?? ""
+											let isEmoji = message.isEmoji
+											context.delete(message)
+											do {
+												try context.save()
+											} catch {
+												print("Failed to delete message \(message.messageId)")
+											}
+											if !bleManager.sendMessage(
+												message: payload,
+												toUserNum: user.num,
+												channel: 0,
+												isEmoji: isEmoji,
+												replyID: 0
+											) {
+												// Pull message back into typing field just in case but
+												// should have successfully sent since we verified
+												// before hand bluetooth connection state
+												typingMessage = payload
+												focusedField = nil
+												replyMessageId = 0
+											}
+										}
+									}
+
 									if !currentUser {
 										Spacer(minLength: 50)
 									}
