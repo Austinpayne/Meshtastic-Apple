@@ -14,20 +14,11 @@ struct UserMessageList: View {
 	@Environment(\.managedObjectContext) var context
 	@EnvironmentObject var bleManager: BLEManager
 
-	enum Field: Hashable {
-		case messageText
-	}
-	// Keyboard State
-	@State var typingMessage: String = ""
-	@State private var totalBytes = 0
-	var maxbytes = 228
-	@FocusState var focusedField: Field?
 	// View State Items
 	@ObservedObject var user: UserEntity
 	@State var showDeleteMessageAlert = false
 	@State private var deleteMessageId: Int64 = 0
 	@State private var replyMessageId: Int64 = 0
-	@State private var sendPositionWithMessage: Bool = false
 
 	var body: some View {
 		VStack {
@@ -89,7 +80,7 @@ struct UserMessageList: View {
 												}
 												Button(action: {
 													self.replyMessageId = message.messageId
-													self.focusedField = .messageText
+													//self.focusedField = .messageText
 													print("I want to reply to \(message.messageId)")
 												}) {
 													Text("reply")
@@ -235,8 +226,8 @@ struct UserMessageList: View {
 												// Pull message back into typing field just in case but
 												// should have successfully sent since we verified
 												// before hand bluetooth connection state
-												typingMessage = payload
-												focusedField = nil
+												//typingMessage = payload
+												//focusedField = nil
 												replyMessageId = 0
 											}
 										}
@@ -319,85 +310,21 @@ struct UserMessageList: View {
 			}
 			#endif
 
-			HStack(alignment: .top) {
-				ZStack {
-					TextField("message", text: $typingMessage, axis: .vertical)
-						.onChange(of: typingMessage, perform: { value in
-							totalBytes = value.utf8.count
-							// Only mess with the value if it is too big
-							if totalBytes > maxbytes {
-								let firstNBytes = Data(typingMessage.utf8.prefix(maxbytes))
-								if let maxBytesString = String(data: firstNBytes, encoding: String.Encoding.utf8) {
-									// Set the message back to the last place where it was the right size
-									typingMessage = maxBytesString
-								} else {
-									print("not a valid UTF-8 sequence")
-								}
-							}
-						})
-						.keyboardType(.default)
-						.toolbar {
-							ToolbarItemGroup(placement: .keyboard) {
-								Button("dismiss.keyboard") {
-									focusedField = nil
-								}
-								.font(.subheadline)
-								Spacer()
-								Button {
-									let userLongName = bleManager.connectedPeripheral != nil ? bleManager.connectedPeripheral.longName : "Unknown"
-									sendPositionWithMessage = true
-									typingMessage =  "📍 " + userLongName + " has shared their position and requested a response with your position."
-								} label: {
-									Image(systemName: "mappin.and.ellipse")
-										.symbolRenderingMode(.hierarchical)
-										.imageScale(.large).foregroundColor(.accentColor)
-								}
-								ProgressView("\("bytes".localized): \(totalBytes) / \(maxbytes)", value: Double(totalBytes), total: Double(maxbytes))
-									.frame(width: 130)
-									.padding(5)
-									.font(.subheadline)
-									.accentColor(.accentColor)
-							}
-						}
-						.padding(.horizontal, 8)
-						.focused($focusedField, equals: .messageText)
-						.multilineTextAlignment(.leading)
-						.frame(minHeight: 50)
-						.keyboardShortcut(.defaultAction)
-						.onSubmit {
-						#if targetEnvironment(macCatalyst)
-							if bleManager.sendMessage(message: typingMessage, toUserNum: user.num, channel: 0, isEmoji: false, replyID: replyMessageId) {
-								typingMessage = ""
-								focusedField = nil
-								replyMessageId = 0
-								if sendPositionWithMessage {
-									if bleManager.sendPosition(channel: 0, destNum: user.num, wantResponse: true) {
-										print("Location Sent")
-									}
-								}
-							}
-						#endif
-						}
-					Text(typingMessage).opacity(0).padding(.all, 0)
-				}
-				.overlay(RoundedRectangle(cornerRadius: 20).stroke(.tertiary, lineWidth: 1))
-				.padding(.bottom, 15)
-				Button(action: {
-					if bleManager.sendMessage(message: typingMessage, toUserNum: user.num, channel: 0, isEmoji: false, replyID: replyMessageId) {
-						typingMessage = ""
-						focusedField = nil
-						replyMessageId = 0
-						if sendPositionWithMessage {
-							if bleManager.sendPosition(channel: 0, destNum: user.num, wantResponse: true) {
-								print("Location Sent")
-							}
+			MessageField(
+				userLongName: bleManager.connectedPeripheral != nil ? bleManager.connectedPeripheral.longName : "Unknown"
+			) {
+				if bleManager.sendMessage(message: $0, toUserNum: user.num, channel: 0, isEmoji: false, replyID: replyMessageId) {
+					replyMessageId = 0
+					if $1 {
+						if bleManager.sendPosition(channel: 0, destNum: user.num, wantResponse: true) {
+							print("Location Sent")
 						}
 					}
-				}) {
-					Image(systemName: "arrow.up.circle.fill").font(.largeTitle).foregroundColor(.accentColor)
+					return true
+				} else {
+					return false
 				}
 			}
-			.padding(.all, 15)
 		}
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
